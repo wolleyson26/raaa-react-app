@@ -1,11 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const connectDB = require("./config/db");
+// const connectDB = require("./config/db");
 const keys = require("./config/keys");
 
 const app = express();
 
-connectDB();
+mongoose.connect(keys.mongoURI);
 
 // Init middleware
 app.use(express.json({ extended: false }));
