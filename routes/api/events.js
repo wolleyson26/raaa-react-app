@@ -7,37 +7,6 @@ const { eventFormValidator } = require("../../validate");
 const admin = require("../../middlewares/admin");
 const Event = require("../../models/Event");
 
-const multer = require("multer");
-const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, "./uploads/images");
-  },
-  filename: function(req, file, cb) {
-    cb(null, new Date().toISOString() + file.originalname);
-  }
-});
-
-const fileFilter = (req, file, cb) => {
-  // Reject a file
-  if (
-    file.mimetype === "image/jpeg" ||
-    file.mimetype === "image/jpg" ||
-    file.mimetype === "image/png"
-  ) {
-    cb(null, true);
-  } else {
-    cb(new Error("Invalid image type"), false);
-  }
-};
-
-const upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 1024 * 5
-  },
-  fileFilter: fileFilter
-});
-
 // @route   GET api/events
 // @desc    get events
 // @access  Public
@@ -55,55 +24,49 @@ router.get("/", async (req, res) => {
 // @route   Post api/events
 // @desc    Create an events
 // @access  Private
-router.post(
-  "/",
-  admin,
-  upload.single("postImage"),
-  eventFormValidator,
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    try {
-      const user = await User.findById(req.user.id).select("-password");
-
-      const {
-        title,
-        date,
-        time,
-        location,
-        locationUrl,
-        body,
-        publish
-      } = req.body;
-
-      let image = "";
-
-      if (req.file) image = req.file.path;
-
-      const newEvent = new Event({
-        title,
-        date,
-        time,
-        location,
-        locationUrl,
-        body,
-        publish,
-        image,
-        user: req.user.id
-      });
-
-      const event = await newEvent.save();
-
-      res.json(event);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send("Server Error");
-    }
+router.post("/", admin, eventFormValidator, async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
-);
+
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+
+    const {
+      title,
+      date,
+      time,
+      location,
+      locationUrl,
+      body,
+      publish
+    } = req.body;
+
+    //   let image = "";
+
+    //   if (req.file) image = req.file.path;
+
+    const newEvent = new Event({
+      title,
+      date,
+      time,
+      location,
+      locationUrl,
+      body,
+      publish,
+      image,
+      user: req.user.id
+    });
+
+    const event = await newEvent.save();
+
+    res.json(event);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
 
 // @route   PUT api/events
 // @desc    Update an events
