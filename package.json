@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Nelson Anane",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "concurrently": "^4.1.1",
     "express": "^4.17.1",
     "express-validator": "^6.1.1",
     "gravatar": "^1.8.0",
