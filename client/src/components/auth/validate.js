@@ -15,6 +15,8 @@ const validate = values => {
     errors.password = "Required";
   } else if (values.password.length < 6) {
     errors.password = "Password must be more than 6 characters";
+  } else if (!/[0-9]$/i.test(values.password)) {
+    errors.password = "Password must contain at least one numeric character";
   }
   if (!values.password2) {
     errors.password2 = "Required";

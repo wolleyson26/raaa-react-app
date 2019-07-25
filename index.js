@@ -2,13 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
 
-const app = express();
-
 mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false
 });
+
+const app = express();
 
 // Init middleware
 app.use(express.json({ extended: false }));
