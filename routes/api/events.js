@@ -33,7 +33,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 2
+    fileSize: 1024 * 1024 * 5
   },
   fileFilter: fileFilter
 });
@@ -100,7 +100,7 @@ router.post(
       res.json(event);
     } catch (err) {
       console.error(err.message);
-      res.status(400).send("Server Error");
+      res.status(500).send("Server Error");
     }
   }
 );
@@ -151,7 +151,7 @@ router.put("/:id", admin, eventFormValidator, async (req, res) => {
     res.json(event);
   } catch (err) {
     console.error(err.message);
-    res.status(400).send("Server Error");
+    res.status(500).send("Server Error");
   }
 });
 
