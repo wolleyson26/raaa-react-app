@@ -1,5 +1,4 @@
 module.exports = {
-  mongoURI:
-    "mongodb+srv://raaaUser:raaadbpassword@raaa-react-3if0o.mongodb.net/test?retryWrites=true&w=majority",
-  jwtSecret: "hjskdhgsjdlhgYUGBJjsafljahe"
+  mongoURI: process.env.MONGO_URI,
+  jwtSecret: process.env.JWT_SECRET
 };
