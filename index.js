@@ -3,24 +3,19 @@ const mongoose = require("mongoose");
 const keys = require("./config/keys");
 const path = require("path");
 
-mongoose
-  .connect(keys.mongoURI, {
+try {
+  mongoose.connect(keys.mongoURI, {
     useNewUrlParser: true,
-    autoIndex: false, // Don't build indexes
-    reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
-    useMongoClient: true,
-    reconnectInterval: 500, // Reconnect every 500ms
-    poolSize: 10, // Maintain up to 10 socket connections
-    // If not connected, return errors immediately rather than waiting for reconnect
-    bufferMaxEntries: 0,
-    connectTimeoutMS: 10000, // Give up initial connection after 10 seconds
-    socketTimeoutMS: 45000,
-    family: 4 // Use IPv4, skip trying IPv6
-  })
-  .then(() => {
-    console.log("MongoDB connected...");
-  })
-  .catch(err => console.log(err));
+    useCreateIndex: true,
+    useFindAndModify: false
+  });
+
+  console.log("MongoDB Connected...");
+} catch (err) {
+  console.error(err.message);
+  // Exit process with failure
+  process.exit(1);
+}
 
 const app = express();
 
