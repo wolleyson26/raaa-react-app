@@ -9,7 +9,9 @@ const PostCard = ({ post: { _id, image, title, postbody } }) => {
       className="uk-card uk-card-default uk-card-small uk-card-body uk-grid uk-visible-toggle uk-margin-auto"
       tabIndex="-1">
       <div className="uk-width-1-6@s uk-padding-remove uk-text-center">
-        {image && <img src={image.thumbnail} width="120" height="120" />}
+        {image && (
+          <img src={`/api/posts/image/${_id}`} width="120" height="120" />
+        )}
       </div>
       <div className="uk-width-expand@s uk-padding-remove-right">
         <h3 className="uk-card-title uk-margin-remove-bottom">{title}</h3>

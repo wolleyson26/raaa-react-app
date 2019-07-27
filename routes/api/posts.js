@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const formidable = require("formidable");
+const fs = require("fs");
 const { validationResult } = require("express-validator");
 const { postFormValidator, commentFormValidator } = require("../../validate");
 
@@ -13,9 +15,6 @@ const User = require("../../models/User");
 
 const multer = require("multer");
 const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, "./uploads/images");
-  },
   filename: function(req, file, cb) {
     cb(null, new Date().toISOString() + file.originalname);
   }
@@ -73,10 +72,12 @@ router.post(
         caption
       } = req.body;
 
-      let image = { caption: "", thumbnail: "" };
+      let image = {};
 
-      if (req.file) image = { thumbnail: req.file.path };
-      if (caption) image = { caption };
+      if (req.file) {
+        (image.data = fs.readFileSync(req.file.path)),
+          (image.contentType = req.file.mimetype);
+      }
 
       const newPost = new Post({
         title,
@@ -86,6 +87,7 @@ router.post(
         date,
         postbody,
         image,
+        caption,
         meta,
         publish,
         name: user.name,
@@ -146,11 +148,14 @@ router.put(
       updatedPost.postbody = postbody;
       if (classyear) updatedPost.classyear = classyear;
       if (date) updatedPost.date = date;
-      if (req.file)
-        updatedPost.image = { ...post.image, thumbnail: req.file.path };
       if (meta) updatedPost.meta = meta;
       if (publish) updatedPost.publish = publish;
-      if (caption) updatedPost.image = { ...post.image, caption };
+      if (caption) updatedPost.caption = { caption };
+
+      if (req.file) {
+        (image.data = fs.readFileSync(req.file.path)),
+          (image.contentType = req.file.mimetype);
+      }
 
       post = await Post.findByIdAndUpdate(
         req.params.id,
@@ -348,6 +353,22 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
     );
 
     res.send(post);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+router.get("/image/:postId", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.postId);
+
+    if (!post) {
+      return res.status(400).json({ msg: "image not found" });
+    }
+
+    res.set("Content-Type", post.image.contentType);
+    return res.send(post.image.data);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");

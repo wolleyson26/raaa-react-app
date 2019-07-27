@@ -7,7 +7,7 @@ const SmallNewsCard = ({ post }) => {
     <div>
       <div className="uk-card uk-card-default uk-margin uk-margin-remove-top">
         <div className="uk-card-media-top">
-          <img src={`/${post.image.thumbnail}`} alt={post.image.caption} />
+          <img src={`/api/posts/image/${post._id}`} alt={post.image.caption} />
         </div>
         <div className="uk-card-body">
           <h4 className="uk-card-meta">{post.title}</h4>

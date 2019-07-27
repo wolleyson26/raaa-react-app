@@ -13,7 +13,7 @@ const Carousel = ({ post: { posts }, getPosts }) => {
   return (
     <div uk-slideshow="min-height: 300; max-height: 500; animation: pull; autoplay: true; pause-on-hover">
       <div
-        className="uk-position-relative uk-visible-toggle uk-light"
+        className="uk-position-relative uk-visible-toggle uk-light uk-margin-bottom"
         tabIndex="-1">
         <ul className="uk-slideshow-items">
           {posts

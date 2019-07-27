@@ -177,6 +177,7 @@ const Post = ({ addPost, history }) => {
             <div uk-form-custom>
               <input
                 type="file"
+                accept="image/*"
                 name="postImage"
                 multiple
                 onChange={e => handleImageFile(e)}
@@ -192,7 +193,6 @@ const Post = ({ addPost, history }) => {
               data-uk-htmleditor="{markdown:true}"
               name="caption"
               value={caption}
-              disabled={!file ? "true" : "false"}
               onChange={e => onChange(e)}
             />
           </div>

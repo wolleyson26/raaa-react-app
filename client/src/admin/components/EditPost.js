@@ -43,11 +43,10 @@ const EditPost = ({ post: { post, loading }, getPost, updatePost, match }) => {
       publish: post === null || !post.publish ? "" : post.publish
     });
 
+    const image = `/api/posts/image/${match.params.id}`;
+    console.log(image);
     setFile({
-      file:
-        post === null || loading || !post.image || !post.image.thumbnail
-          ? ""
-          : post.image.thumbnail
+      file: image
     });
     setClassYear({
       classYear:
@@ -256,7 +255,7 @@ const EditPost = ({ post: { post, loading }, getPost, updatePost, match }) => {
           Cancel
         </Link>
         <button className="uk-button uk-button-primary uk-align-right">
-          Submit
+          Update
         </button>
       </form>
     </div>

@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const connectDB = require("./config/db");
 const path = require("path");
 
@@ -17,6 +18,8 @@ app.use("/api/users", require("./routes/api/users"));
 app.use("/api/profile", require("./routes/api/profile"));
 app.use("/api/posts", require("./routes/api/posts"));
 app.use("/api/events", require("./routes/api/events"));
+
+app.use("/api/posts/image/postId", require("./routes/api/posts"));
 
 // Server static assets in production
 if (process.env.NODE_ENV === "production") {

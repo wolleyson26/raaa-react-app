@@ -27,9 +27,10 @@ const PostSchema = new Schema({
     required: true
   },
   image: {
-    thumbnail: String,
-    caption: String
+    data: Buffer,
+    contentType: String
   },
+  imageCaption: String,
   publish: {
     type: Boolean,
     default: false

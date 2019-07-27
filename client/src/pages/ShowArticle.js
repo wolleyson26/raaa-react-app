@@ -27,7 +27,7 @@ const ShowArticle = ({
       <div className="uk-margin-large-bottom">
         <div className="media-top">
           <img
-            src={`/${post.image.thumbnail}`}
+            src={`/api/posts/image/${post._id}`}
             alt={post.image.thumbnail}
             className="uk-width-expand"
           />

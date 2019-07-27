@@ -11,7 +11,7 @@ const NewsCard = ({ post, addLike, removeLike, auth }) => {
       <div className="uk-margin-large-bottom">
         <div className="media-top">
           <img
-            src={`/${post.image.thumbnail}`}
+            src={`/api/posts/image/${post._id}`}
             alt={post.image.caption}
             className="uk-width-expand"
           />

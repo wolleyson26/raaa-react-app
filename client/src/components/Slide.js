@@ -7,7 +7,11 @@ const Slide = ({ postId, photo, title, text }) => {
   return (
     <SlideWrapper>
       <li>
-        <img src={photo} alt="" className="uk-position-center" />
+        <img
+          src={`/api/posts/image/${postId}`}
+          alt=""
+          className="uk-position-center"
+        />
         <div className="uk-overlay-primary uk-overlay-bottom uk-position-bottom-right uk-position-small uk-padding-small overlay">
           <h3 className="uk-margin-remove slide-header">{title}</h3>
           <p className="uk-margin-remove uk-visible@s">{text}</p>
