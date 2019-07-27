@@ -39,7 +39,9 @@ const EditProfile = ({
 
   useEffect(() => {
     getProfileById(match.params.id);
+  }, []);
 
+  useEffect(() => {
     setFormData({
       bio: !profile || loading || !profile.bio ? "" : profile.bio,
       school:
@@ -108,7 +110,7 @@ const EditProfile = ({
       birthDate:
         !profile || loading || !profile.birthDate ? "" : profile.birthDate
     });
-  }, [loading]);
+  }, [profile]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -119,7 +121,8 @@ const EditProfile = ({
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  console.log(formData);
+  console.log(profile);
   const {
     bio,
     school,

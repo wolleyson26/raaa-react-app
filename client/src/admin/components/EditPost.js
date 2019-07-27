@@ -44,7 +44,7 @@ const EditPost = ({ post: { post, loading }, getPost, updatePost, match }) => {
     });
 
     const image = `/api/posts/image/${match.params.id}`;
-    console.log(image);
+
     setFile({
       file: image
     });

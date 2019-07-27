@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getPost, addLike, removeLike } from "../actions/post";
 import PropTypes from "prop-types";
-import Spinner from "../components/Spinner";
 import LeftSidebar from "../components/LeftSidebar";
 import RightSidebar from "../components/RightSidebar";
 import CommentForm from "../components/CommentForm";
 import CommentItem from "../components/CommentItem";
+import Spinner from "../components/Spinner";
 
 const ShowArticle = ({
   post: { post, loading },
@@ -23,7 +23,9 @@ const ShowArticle = ({
   }, [match.params.id]);
 
   const newsArticle = () => {
-    return (
+    return loading ? (
+      <Spinner />
+    ) : (
       <div className="uk-margin-large-bottom">
         <div className="media-top">
           <img

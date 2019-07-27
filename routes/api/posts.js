@@ -152,6 +152,8 @@ router.put(
       if (publish) updatedPost.publish = publish;
       if (caption) updatedPost.caption = { caption };
 
+      let image = {};
+
       if (req.file) {
         (image.data = fs.readFileSync(req.file.path)),
           (image.contentType = req.file.mimetype);
