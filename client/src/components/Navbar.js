@@ -215,7 +215,16 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         </div>
         <div className="uk-width-1-4@s right-links uk-padding-remove-left">
           <div className="uk-align-right uk-margin-top">
-            <SingleLink link="/donate" text="Donate" />
+            <Link
+              link="/donate"
+              text="Donate"
+              style={{
+                border: "2px solid #e03131",
+                color: "#e03131",
+                padding: "5px"
+              }}>
+              DONATE
+            </Link>
             {!loading && (
               <>
                 {isAuthenticated ? (
