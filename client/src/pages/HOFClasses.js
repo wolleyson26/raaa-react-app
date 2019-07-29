@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import _ from "lodash";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getPosts } from "../actions/post";
 import Search from "../components/SearchForm";
 import MediaIcons from "../components/MediaIcons";
 import Donate from "../components/DonateCard";
 import photo from "../imgs/photo7.jpg";
 
-const HOFClasses = props => {
+const HOFClasses = ({ post: { posts, loading }, getPosts }) => {
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  console.log(posts);
   return (
     <div className="uk-container">
       <h2>Hall of Fame Classes</h2>
@@ -15,91 +24,104 @@ const HOFClasses = props => {
           <Search placeholder="Search Hall of Famers..." />
 
           <ul uk-accordion="multiple: true">
-            <li class="uk-open">
-              <a class="uk-accordion-title" href="#">
-                2019 Inductees
-              </a>
-              <div class="uk-accordion-content">
-                <article class="uk-comment">
-                  <div class="uk-comment-header uk-grid uk-flex-middle" uk-grid>
-                    <div class="uk-width-auto">
-                      <img
-                        className="uk-comment-avatar uk-border-circle"
-                        src={photo}
-                        width="80"
-                        alt=""
-                      />
-                    </div>
-                    <div class="uk-width-expand">
-                      <h4 class="uk-comment-title uk-margin-remove">
-                        <a class="uk-link-reset" href="#">
-                          Frank McClellan
-                        </a>
-                      </h4>
-                      <ul class="uk-comment-body uk-margin-remove-top uk-padding-remove-left">
-                        <p>
-                          diam nonumy eirmod tempor invidunt ut labore et dolore
-                          magna aliquyam erat, sed diam voluptua. At vero eos et
-                          et ea rebum.
-                        </p>
-                      </ul>
-                    </div>
+            {posts
+              .filter(post => post.category === "hof")
+              .map(post => (
+                <li class="uk-open">
+                  <a class="uk-accordion-title" to="/hof/inductees">
+                    {post.classyear} Inductees
+                  </a>
+                  <div class="uk-accordion-content">
+                    <article class="uk-comment">
+                      <Link to="/hof/inductees">
+                        <p>All 2019 inductees</p>
+                      </Link>
+                      <div
+                        class="uk-comment-header uk-grid uk-flex-middle"
+                        uk-grid>
+                        <div class="uk-width-auto">
+                          <img
+                            className="uk-comment-avatar uk-border-circle"
+                            src={photo}
+                            width="80"
+                            alt=""
+                          />
+                        </div>
+                        <div class="uk-width-expand">
+                          <h4 class="uk-comment-title uk-margin-remove">
+                            <a class="uk-link-reset" href="#">
+                              Frank McClellan
+                            </a>
+                          </h4>
+                          <ul class="uk-comment-body uk-margin-remove-top uk-padding-remove-left">
+                            <p>
+                              diam nonumy eirmod tempor invidunt ut labore et
+                              dolore magna aliquyam erat, sed diam voluptua. At
+                              vero eos et et ea rebum.
+                            </p>
+                          </ul>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="uk-comment">
+                      <div
+                        class="uk-comment-header uk-grid uk-flex-middle"
+                        uk-grid>
+                        <div class="uk-width-auto">
+                          <img
+                            className="uk-comment-avatar uk-border-circle"
+                            src={photo}
+                            width="80"
+                            alt=""
+                          />
+                        </div>
+                        <div class="uk-width-expand">
+                          <h4 class="uk-comment-title uk-margin-remove">
+                            <a class="uk-link-reset" href="#">
+                              John Cain
+                            </a>
+                          </h4>
+                          <ul class="uk-comment-body uk-margin-remove-top uk-padding-remove-left">
+                            <p>
+                              diam nonumy eirmod tempor invidunt ut labore et
+                              dolore magna aliquyam erat, sed diam voluptua. At
+                              vero eos et et ea rebum.
+                            </p>
+                          </ul>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="uk-comment">
+                      <div
+                        class="uk-comment-header uk-grid uk-flex-middle"
+                        uk-grid>
+                        <div class="uk-width-auto">
+                          <img
+                            className="uk-comment-avatar uk-border-circle"
+                            src="images/avatar.jpg"
+                            width="80"
+                            alt=""
+                          />
+                        </div>
+                        <div class="uk-width-expand">
+                          <h4 class="uk-comment-title uk-margin-remove">
+                            <a class="uk-link-reset" href="#">
+                              Peter Deal
+                            </a>
+                          </h4>
+                          <ul class="uk-comment-body uk-margin-remove-top uk-padding-remove-left">
+                            <p>
+                              diam nonumy eirmod tempor invidunt ut labore et
+                              dolore magna aliquyam erat, sed diam voluptua. At
+                              vero eos et et ea rebum.
+                            </p>
+                          </ul>
+                        </div>
+                      </div>
+                    </article>
                   </div>
-                </article>
-                <article class="uk-comment">
-                  <div class="uk-comment-header uk-grid uk-flex-middle" uk-grid>
-                    <div class="uk-width-auto">
-                      <img
-                        className="uk-comment-avatar uk-border-circle"
-                        src={photo}
-                        width="80"
-                        alt=""
-                      />
-                    </div>
-                    <div class="uk-width-expand">
-                      <h4 class="uk-comment-title uk-margin-remove">
-                        <a class="uk-link-reset" href="#">
-                          John Cain
-                        </a>
-                      </h4>
-                      <ul class="uk-comment-body uk-margin-remove-top uk-padding-remove-left">
-                        <p>
-                          diam nonumy eirmod tempor invidunt ut labore et dolore
-                          magna aliquyam erat, sed diam voluptua. At vero eos et
-                          et ea rebum.
-                        </p>
-                      </ul>
-                    </div>
-                  </div>
-                </article>
-                <article class="uk-comment">
-                  <div class="uk-comment-header uk-grid uk-flex-middle" uk-grid>
-                    <div class="uk-width-auto">
-                      <img
-                        className="uk-comment-avatar uk-border-circle"
-                        src="images/avatar.jpg"
-                        width="80"
-                        alt=""
-                      />
-                    </div>
-                    <div class="uk-width-expand">
-                      <h4 class="uk-comment-title uk-margin-remove">
-                        <a class="uk-link-reset" href="#">
-                          Peter Deal
-                        </a>
-                      </h4>
-                      <ul class="uk-comment-body uk-margin-remove-top uk-padding-remove-left">
-                        <p>
-                          diam nonumy eirmod tempor invidunt ut labore et dolore
-                          magna aliquyam erat, sed diam voluptua. At vero eos et
-                          et ea rebum.
-                        </p>
-                      </ul>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </li>
+                </li>
+              ))}
             <li>
               <a class="uk-accordion-title" href="#">
                 2018 Inductees
@@ -132,6 +154,16 @@ const HOFClasses = props => {
   );
 };
 
-HOFClasses.propTypes = {};
+HOFClasses.propTypes = {
+  post: PropTypes.object.isRequired,
+  getPosts: PropTypes.func.isRequired
+};
 
-export default HOFClasses;
+const mapStateToProps = state => ({
+  post: state.post
+});
+
+export default connect(
+  mapStateToProps,
+  { getPosts }
+)(HOFClasses);

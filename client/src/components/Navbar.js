@@ -209,10 +209,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         </div>
         <div className="uk-width-1-4@s right-links uk-padding-remove-left">
           <div className="uk-align-right uk-margin-top">
+            <div className="highlight" />
             <Link
               link="/donate"
               text="Donate"
-              className="donate-link"
+              className="uk-button uk-button-text"
               style={{ color: "#e03131" }}>
               DONATE
             </Link>
@@ -277,38 +278,40 @@ const NavWrapper = styled.nav`
     }
   }
 
-  .donate-link {
-    border: 2px solid #e03131;
-    color: #e03131;
-    padding: 5px;
-    text-decoration: none;
-    --borderWidth: 13px;
+  .right-links {
     position: relative;
-    border-radius: var(--borderWidth);
   }
 
-  .donate-link:after {
-    content: "";
+  .highlight {
+    width: 1px;
+    height: 1px;
+    background: #8bc34a;
+    border-radius: 50%;
     position: absolute;
-    top: calc(-1 * var(--borderWidth));
-    left: calc(-1 * var(--borderWidth));
-    height: calc(100% + var(--borderWidth) * 2);
-    width: calc(100% + var(--borderWidth) * 2);
-    border: linear-gradient(
-      60deg,
-      #f79533,
-      #f37055,
-      #ef4e7b,
-      #a166ab,
-      #5073b8,
-      #1098ad,
-      #07b39b,
-      #6fba82
-    );
-    border-radius: calc(2 * var(--borderWidth));
-    z-index: -1;
-    animation: animatedgradient 3s ease alternate infinite;
-    background-size: 300% 300%;
+    top: 30px;
+    right: 177px;
+    -webkit-animation: pulse 3s ease-in-out infinite;
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @-webkit-keyframes pulse {
+    0%,
+    70% {
+      box-shadow: 0px 0px 0px 0px rgba(139, 195, 74, 0.5);
+    }
+    100% {
+      box-shadow: 0px 0px 0px 50px rgba(139, 195, 74, 0);
+    }
+  }
+
+  @keyframes pulse {
+    0%,
+    70% {
+      box-shadow: 0px 0px 0px 0px rgba(139, 195, 74, 0.5);
+    }
+    100% {
+      box-shadow: 0px 0px 0px 50px rgba(139, 195, 74, 0);
+    }
   }
 
   .mid-links a {

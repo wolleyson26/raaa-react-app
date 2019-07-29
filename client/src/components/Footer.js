@@ -10,13 +10,13 @@ const Footer = props => {
       <div
         style={{
           background: "brown",
-          marginTop: "200px",
-          paddingBottom: "50px"
+          marginTop: "200px"
         }}>
-        <div className="uk-container uk-padding">
+        <div className="uk-container uk-padding uk-padding-remove-bottom">
           <div className="uk-grid">
             <div className="uk-width-1-3@s">
               <div className="uk-width-expand@s uk-remove-padding mid-links">
+                <h2>Site Links</h2>
                 <div className="uk-grid">
                   <div className="uk-width-expand@s">
                     <ul className="uk-padding-remove-left">
@@ -57,30 +57,43 @@ const Footer = props => {
                     </ul>
                   </div>
                 </div>
-                <div className="uk-margin-large-top">
-                  <h2>Contact</h2>
-                  <p> RAAA, Inc P.O. Box 422 Piscataway, NJ 08855-0422</p>
-                  Forward emails to: info@rutgersblackalumni.org
-                </div>
               </div>
             </div>
-            <div className="uk-width-expand@s uk-padding uk-text-center uk-padding-remove">
-              <p>We hope you can support our community by donating</p>
-              <button
-                className="uk-button uk-button-default"
+            <div className="uk-width-expand@s uk-text-center uk-margin-top">
+              <h2>We hope you can support our community by donating</h2>
+              <Link
+                className="uk-button uk-button-large uk-button-default"
                 style={{ color: "#fff" }}>
                 Donate
-              </button>
-
-              <div className="uk-margin-large-top">
-                <div className="uk-margin-medium-top uk-text-center">
-                  <SocialIcons />
+              </Link>
+            </div>
+          </div>
+          <div className="uk-grid">
+            <div className="uk-expand@s">
+              <h2>Contact</h2>
+              <p> RAAA, Inc P.O. Box 422 Piscataway, NJ 08855-0422</p>
+              Forward emails to: info@rutgersblackalumni.org
+            </div>
+            <div className="uk-width-expand@s">
+              <div className="uk-text-center">
+                <SocialIcons />
+              </div>
+            </div>
+            <div className="uk-width-expand">
+              <div className="uk-grid uk-padding">
+                <div
+                  className="uk-width-expand"
+                  style={{ borderRight: ".5px solid #fff" }}>
+                  <Link to="/contact">Questions & Comments</Link>
+                </div>
+                <div className="uk-width-expand">
+                  <Link to="/privacy-policy">Privacy Policy</Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <hr className="uk-heading-line-xsmall" />
+        <hr className="uk-heading-line-xsmall uk-margin-remove-bottom" />
         <div className="uk-text-center uk-padding">
           &copy; 2019 Copyright:
           <Link to="/">
