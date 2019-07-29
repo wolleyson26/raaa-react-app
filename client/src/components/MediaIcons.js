@@ -23,7 +23,7 @@ const MediaIcons = props => {
       />
       <a
         href="https://twitter.com"
-        style={{ background: "#00d4ff", color: "#fff" }}
+        style={{ background: "#1c94e0", color: "#fff" }}
         className="uk-icon-button"
         uk-icon="twitter"
       />

@@ -7,15 +7,15 @@ import MediaIcons from "../components/MediaIcons";
 const about = props => {
   return (
     <div className="uk-container uk-margin-top">
-      <h1 className="uk-text-center">About</h1>
+      <h2 className="uk-text-center">ABOUT</h2>
       <hr className="uk-divider-icon" />
       <div className="uk-grid">
         <div className="uk-width-1-4@s uk-margin uk-visible@s">
           <Donate />
           <MediaIcons />
         </div>
-        <hr className="uk-divider-vertical" />
-        <div className="uk-width-expand@s">
+        <hr className="uk-divider-vertical uk-visible@s" />
+        <div className="uk-width-expand@s uk-margin-remove-top@l">
           <p>
             In the spirit of the predecessor organization (Rutgers
             African-American Alumni Alliance) which was founded in 1989, the

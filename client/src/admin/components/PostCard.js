@@ -10,7 +10,10 @@ const PostCard = ({ post: { _id, image, title, postbody } }) => {
       tabIndex="-1">
       <div className="uk-width-1-6@s uk-padding-remove uk-text-center">
         {image && (
-          <img src={`/api/posts/image/${_id}`} width="120" height="120" />
+          <img
+            src={`/api/posts/image/${_id}`}
+            style={{ width: "100%", maxHeight: "80px", objectFit: "cover" }}
+          />
         )}
       </div>
       <div className="uk-width-expand@s uk-padding-remove-right">

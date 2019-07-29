@@ -53,12 +53,6 @@ const Post = ({ addPost, history }) => {
       ...formData,
       [e.target.name]: e.target.value
     });
-
-    if (e.target.value === "hof") {
-      setClassYear(!classYear);
-    } else {
-      setClassYear({ classYear: true });
-    }
   };
 
   const handleImageFile = e => {
@@ -142,7 +136,7 @@ const Post = ({ addPost, history }) => {
               name="classyear"
               value={classyear}
               onChange={e => onChange(e)}
-              disabled={classYear}
+              disabled={category === "hof" ? false : true}
             />
           </div>
           <div className="uk-margin">

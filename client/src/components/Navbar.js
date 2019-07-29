@@ -51,9 +51,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
               <div uk-drop="mode: hover" className="uk-margin-remove-top">
                 <div className="uk-card uk-card-body uk-card-default">
                   <ul className="uk-list uk-link-text uk-align-left uk-text-left">
-                    <h4 className="uk-card-title">
-                      <span className="uk-link-heading">About RAAA</span>
-                    </h4>
                     <li>
                       <Link to="/welcome">Welcome</Link>
                     </li>
@@ -87,17 +84,14 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
               <div uk-drop="mode: hover" className="uk-margin-remove-top">
                 <div className="uk-card uk-card-body uk-card-default">
                   <ul className="uk-list uk-link-text uk-align-left uk-text-left">
-                    <h3 className="uk-card-title">
-                      <span className="uk-link-heading">Hall of Fame</span>
-                    </h3>
                     <li>
                       <a href="#">Overview</a>
                     </li>
                     <li>
-                      <a href="#">Current Class</a>
+                      <Link to="/hof/current">Current Class</Link>
                     </li>
                     <li>
-                      <a href="#">Previous Classes</a>
+                      <Link to="/hof/classes">Previous Classes</Link>
                     </li>
                     <li>
                       <a href="#">Award Dinner Information</a>
@@ -218,11 +212,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
             <Link
               link="/donate"
               text="Donate"
-              style={{
-                border: "2px solid #e03131",
-                color: "#e03131",
-                padding: "5px"
-              }}>
+              className="donate-link"
+              style={{ color: "#e03131" }}>
               DONATE
             </Link>
             {!loading && (
@@ -284,6 +275,40 @@ const NavWrapper = styled.nav`
     .right-links {
       display: none;
     }
+  }
+
+  .donate-link {
+    border: 2px solid #e03131;
+    color: #e03131;
+    padding: 5px;
+    text-decoration: none;
+    --borderWidth: 13px;
+    position: relative;
+    border-radius: var(--borderWidth);
+  }
+
+  .donate-link:after {
+    content: "";
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    border: linear-gradient(
+      60deg,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82
+    );
+    border-radius: calc(2 * var(--borderWidth));
+    z-index: -1;
+    animation: animatedgradient 3s ease alternate infinite;
+    background-size: 300% 300%;
   }
 
   .mid-links a {

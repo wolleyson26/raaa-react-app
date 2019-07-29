@@ -13,6 +13,8 @@ import setAuthToken from "./utils/setAuthToken";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import HOF from "./pages/HOF";
+import HOFClasses from "./pages/HOFClasses";
+import HOFCurrent from "./pages/HOFCurrent";
 import Gallery from "./pages/Gallery";
 import News from "./pages/News";
 import HeritageProfile from "./pages/HeritageProfile";
@@ -60,6 +62,8 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
           <Route exact path="/hof" component={HOF} />
+          <Route exact path="/hof/current" component={HOFCurrent} />
+          <Route exact path="/hof/classes" component={HOFClasses} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/news" component={News} />
           <Route exact path="/news/profile" component={HeritageProfile} />

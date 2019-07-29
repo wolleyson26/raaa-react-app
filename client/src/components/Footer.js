@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import SocialIcons from "../components/MediaIcons";
 
 const Footer = props => {
   return (
@@ -56,41 +57,24 @@ const Footer = props => {
                     </ul>
                   </div>
                 </div>
-                <div className="uk-margin-xlarge-top">
+                <div className="uk-margin-large-top">
                   <h2>Contact</h2>
                   <p> RAAA, Inc P.O. Box 422 Piscataway, NJ 08855-0422</p>
                   Forward emails to: info@rutgersblackalumni.org
                 </div>
               </div>
             </div>
-            <div className="uk-width-expand@s uk-padding uk-text-center uk-padding-remove-right">
-              <p>
-                Support for the continued development of Semantic UI comes
-                directly from the community.
-              </p>
-              <button className="uk-button">Donate</button>
+            <div className="uk-width-expand@s uk-padding uk-text-center uk-padding-remove">
+              <p>We hope you can support our community by donating</p>
+              <button
+                className="uk-button uk-button-default"
+                style={{ color: "#fff" }}>
+                Donate
+              </button>
 
               <div className="uk-margin-large-top">
                 <div className="uk-margin-medium-top uk-text-center">
-                  <h5>Connect with us on Social Media</h5>
-                  <a
-                    style={{ background: "black" }}
-                    href="https://facebook.com"
-                    className="uk-icon-button uk-margin-small-right"
-                    uk-icon="facebook"
-                  />
-                  <a
-                    style={{ background: "black" }}
-                    href="https://instagram.com"
-                    className="uk-icon-button  uk-margin-small-right"
-                    uk-icon="instagram"
-                  />
-                  <a
-                    style={{ background: "black" }}
-                    href="https://twitter.com"
-                    className="uk-icon-button"
-                    uk-icon="twitter"
-                  />
+                  <SocialIcons />
                 </div>
               </div>
             </div>

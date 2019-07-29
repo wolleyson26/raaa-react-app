@@ -20,7 +20,7 @@ const EditPost = ({ post: { post, loading }, getPost, updatePost, match }) => {
     publish: ""
   });
 
-  const [toggleClassYear, setClassYear] = useState(true);
+  const [toggleClassYear, setClassYear] = useState("");
   const [file, setFile] = useState("");
 
   useEffect(() => {
@@ -78,8 +78,6 @@ const EditPost = ({ post: { post, loading }, getPost, updatePost, match }) => {
 
     if (e.target.value === "hof") {
       setClassYear(!toggleClassYear);
-    } else {
-      setClassYear({ toggleClassYear: true });
     }
   };
 
@@ -164,7 +162,7 @@ const EditPost = ({ post: { post, loading }, getPost, updatePost, match }) => {
             name="classyear"
             value={formData.classyear}
             onChange={e => handleChange(e)}
-            disabled={toggleClassYear}
+            disabled={formData.category === "hof" ? false : true}
           />
         </div>
         <div className="uk-margin">
