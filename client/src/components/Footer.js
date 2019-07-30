@@ -18,7 +18,7 @@ const Footer = props => {
               <div className="uk-width-expand@s uk-remove-padding mid-links">
                 <h2>Site Links</h2>
                 <div className="uk-grid">
-                  <div className="uk-width-expand@s">
+                  <div className="uk-width-expand">
                     <ul className="uk-padding-remove-left">
                       <li>
                         <Link to="/">Home</Link>
@@ -37,7 +37,7 @@ const Footer = props => {
                       </li>
                     </ul>
                   </div>
-                  <div className="uk-width-expand@s">
+                  <div className="uk-width-expand">
                     <ul className="uk-padding-remove-left">
                       <li>
                         <Link to="/news">News & Events</Link>
@@ -62,6 +62,7 @@ const Footer = props => {
             <div className="uk-width-expand@s uk-text-center uk-margin-top">
               <h2>We hope you can support our community by donating</h2>
               <Link
+                to="/donate"
                 className="uk-button uk-button-large uk-button-default"
                 style={{ color: "#fff" }}>
                 Donate
@@ -80,13 +81,17 @@ const Footer = props => {
               </div>
             </div>
             <div className="uk-width-expand">
-              <div className="uk-grid uk-padding">
+              <div className="uk-flex uk-padding">
                 <div
                   className="uk-width-expand"
-                  style={{ borderRight: ".5px solid #fff" }}>
+                  style={{
+                    borderRight: ".5px solid #fff",
+                    textAlign: "right",
+                    paddingRight: "10px"
+                  }}>
                   <Link to="/contact">Questions & Comments</Link>
                 </div>
-                <div className="uk-width-expand">
+                <div className="uk-width-expand  uk-margin-small-left">
                   <Link to="/privacy-policy">Privacy Policy</Link>
                 </div>
               </div>

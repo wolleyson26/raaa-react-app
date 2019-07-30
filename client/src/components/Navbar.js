@@ -211,7 +211,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <div className="uk-align-right uk-margin-top">
             <div className="highlight" />
             <Link
-              link="/donate"
+              to="/donate"
               text="Donate"
               className="uk-button uk-button-text"
               style={{ color: "#e03131" }}>

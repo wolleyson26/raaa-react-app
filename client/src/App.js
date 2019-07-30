@@ -36,6 +36,7 @@ import Users from "./admin/pages/Users";
 import EditEvent from "./admin/pages/EditEvent";
 import EditDetails from "./pages/EventDetails";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Donate from "./pages/Donate";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -87,6 +88,7 @@ const App = () => {
           <Route exact path="/calendar/:id" component={EditDetails} />
           <Route exact path="/profile/edit/:id" component={EditProfile} />
           <Route exact path="/privacy-policy" component={PrivacyPolicy} />
+          <Route exact path="/donate" component={Donate} />
         </Switch>
         <Footer />
       </BrowserRouter>
