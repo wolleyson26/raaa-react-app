@@ -29,7 +29,7 @@ const fileFilter = (req, file, cb) => {
   ) {
     cb(null, true);
   } else {
-    cb(new Error("Invalid image type"), false);
+    cb(null, false);
   }
 };
 

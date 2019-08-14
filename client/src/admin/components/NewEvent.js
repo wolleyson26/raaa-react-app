@@ -18,19 +18,10 @@ const NewEvent = ({ addEvent, history }) => {
 
   const { title, date, time, location, locationUrl, body, publish } = formData;
 
-  const [file, setFile] = useState("");
-
   const onSubmit = e => {
     e.preventDefault();
-    console.log(formData);
-    const fd = new FormData();
 
-    for (let key in formData) {
-      fd.append(key, formData[key]);
-    }
-    fd.append("postImage", file);
-
-    addEvent(fd, history);
+    addEvent(formData, history);
   };
 
   const onChange = e => {
@@ -38,10 +29,6 @@ const NewEvent = ({ addEvent, history }) => {
       ...formData,
       [e.target.name]: e.target.value
     });
-  };
-
-  const handleImageFile = e => {
-    setFile(e.target.files[0]);
   };
 
   return (
@@ -119,20 +106,6 @@ const NewEvent = ({ addEvent, history }) => {
               value={body}
               onChange={e => onChange(e)}
             />
-          </div>
-          <div class="js-upload uk-placeholder uk-text-center">
-            <span uk-icon="icon: cloud-upload" />{" "}
-            <span class="uk-text-middle">
-              Attach images by dropping them here or
-            </span>
-            <div uk-form-custom>
-              <input
-                type="file"
-                name="postImage"
-                multiple
-                onChange={e => handleImageFile(e)}
-              />
-            </div>
           </div>
           <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
             <label>

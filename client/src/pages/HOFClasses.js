@@ -31,9 +31,8 @@ const HOFClasses = ({ post: { posts, loading }, getPosts }) => {
         <div className="uk-width-expand@s">
           <Search placeholder="Search Hall of Famers..." />
           <ul uk-accordion="multiple: true">
-            {<div>{JSON.stringify(post)}</div>}
+            {_.each(post => console.log(post))}
           </ul>
-          <br /> <br />
         </div>
         <div className="uk-width-1-4@s uk-margin uk-visible@s" />
       </div>

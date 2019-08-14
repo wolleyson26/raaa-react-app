@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
 });
 
 // @route   Post api/events
-// @desc    Create an events
+// @desc    Create an event
 // @access  Private
 router.post("/", admin, eventFormValidator, async (req, res) => {
   const errors = validationResult(req);
@@ -43,10 +43,6 @@ router.post("/", admin, eventFormValidator, async (req, res) => {
       publish
     } = req.body;
 
-    //   let image = "";
-
-    //   if (req.file) image = req.file.path;
-
     const newEvent = new Event({
       title,
       date,
@@ -55,7 +51,6 @@ router.post("/", admin, eventFormValidator, async (req, res) => {
       locationUrl,
       body,
       publish,
-      image,
       user: req.user.id
     });
 

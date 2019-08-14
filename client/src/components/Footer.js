@@ -100,12 +100,11 @@ const Footer = props => {
         </div>
         <hr className="uk-heading-line-xsmall uk-margin-remove-bottom" />
         <div className="uk-text-center uk-padding">
-          &copy; 2019 Copyright:
+          Copyright &copy; {new Date().getFullYear()}{" "}
           <Link to="/">
-            {" "}
-            Rutgers African-American Alumni Alliance (RAAA), Inc.. All Rights
-            Reserved{" "}
+            Rutgers African-American Alumni Alliance (RAAA), Inc.
           </Link>
+          All Rights Reserved
         </div>
       </div>
     </FooterWrapper>
